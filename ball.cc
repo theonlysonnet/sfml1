@@ -4,6 +4,10 @@
 
 //using namespace sf;
 
+#define SCREEN_WIDTH 800
+#define SCREEN_HEIGHT 600
+
+
 class Ball {
 
     public:
@@ -63,20 +67,20 @@ void Ball::move(float x, float y)
 }
 
 void Ball::update(){
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && C.getPosition().x >= 0)
 	{
-		C.move(-1,0);
+        C.move(-1,0);
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && (C.getPosition().x <= SCREEN_WIDTH - (2*C.getRadius())))
 	{
-		C.move(1,0);
+        C.move(1,0);
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && C.getPosition().y <= SCREEN_HEIGHT - (2*C.getRadius()))
 	{
-		C.move(0,1);
+        C.move(0,1);
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && C.getPosition().y >= 0)
 	{
-		C.move(0,-1);
+        C.move(0,-1);
 	}
 }
